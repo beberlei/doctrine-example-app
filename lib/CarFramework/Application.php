@@ -9,11 +9,11 @@ use Symfony\Component\Yaml\Yaml;
 
 class Application
 {
-    public static function bootstrap($configFile, $isDevMode = true)
+    public static function bootstrap($configFile, $isDevMode = true, $cache = null)
     {
         $dbParams = Yaml::parse($configFile);
 
-        $config = Setup::createAnnotationMetadataConfiguration(array(__DIR__ . "/../CarDealer"), $isDevMode);
+        $config = Setup::createAnnotationMetadataConfiguration(array(__DIR__ . "/../CarDealer"), $isDevMode, null, $cache);
         $entityManager = EntityManager::create($dbParams, $config);
 
         if ($dbParams['driver'] == "pdo_sqlite" && isset($dbParams['memory'])) {

@@ -7,4 +7,11 @@ if ( ! file_exists($configFile)) {
     $configFile = __DIR__ . "/config.yml-dist";
 }
 
-$entityManager = \CarFramework\Application::bootstrap($configFile);
+$cache = new \Doctrine\Common\Cache\ArrayCache();
+/*$memcache = new \Memcache();
+$memcache->connect('127.0.0.1');
+$cache = new \Doctrine\Common\Cache\MemcacheCache();
+$cache->setMemcache($memcache);*/
+
+$entityManager = \CarFramework\Application::bootstrap($configFile, false, $cache);
+

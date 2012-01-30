@@ -39,6 +39,7 @@ class ConsoleSQLLogger implements SQLLogger
         $output = $this->output;
         $diff = number_format(microtime(true) - $query['start'], 6);
         $this->sqlTime += $diff;
+
         $output->writeln(sprintf("Query: <comment>%s</comment>\n    Took <info>%s</info> seconds.", $query['sql'], $diff));
         foreach ($query['params'] as $idx => $param) {
             $type = (isset($query['types'][$idx])) ?$query['types'][$idx] : "unknown";

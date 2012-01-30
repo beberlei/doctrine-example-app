@@ -35,17 +35,12 @@ abstract class ConsoleScenario extends Command
 
     final protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $logger = null;
-        if (!$input->getOption('quiet')) {
-            $logger = new \CarFramework\ConsoleSQLLogger($output);
-            $this->em->getConfiguration()->setSQLLogger($logger);
-        }
+        $logger = new \CarFramework\ConsoleSQLLogger($output);
+        $this->em->getConfiguration()->setSQLLogger($logger);
 
         $this->play($this->em, $input);
 
-        if ($logger) {
-            $logger->finalize();
-        }
+        $logger->finalize();
     }
 
     /**
