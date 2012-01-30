@@ -1,0 +1,17 @@
+{
+    "name": "beberlei/doctrine-example-app",
+    "require": {
+        "doctrine/orm": "*",
+        "symfony/console": "*",
+        "symfony/yaml": "*",
+        "symfony/finder": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "CarFramework\\Tests": "tests",
+            "CarDealer\\Tests": "tests",
+            "CarFramework": "lib",
+            "CarDealer": "lib"
+        }
+    }
+}

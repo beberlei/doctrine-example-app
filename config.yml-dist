@@ -1,0 +1,7 @@
+# Configure the Database here, by default we use SQLite in Memory
+driver: pdo_sqlite
+memory: true
+#driver: pdo_mysql
+#user: root
+#password: ~
+#dbname: exampleapp

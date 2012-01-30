@@ -1,0 +1,29 @@
+{
+    "hash": "4fcfc6c4ed517d942d34b3cb068e546a",
+    "packages": [
+        {
+            "package": "doctrine\/common",
+            "version": "2.2.0"
+        },
+        {
+            "package": "doctrine\/dbal",
+            "version": "2.2.1"
+        },
+        {
+            "package": "doctrine\/orm",
+            "version": "2.2.0"
+        },
+        {
+            "package": "symfony\/yaml",
+            "version": "2.1.0-dev"
+        },
+        {
+            "package": "symfony\/console",
+            "version": "2.1.0-dev"
+        },
+        {
+            "package": "symfony\/finder",
+            "version": "2.1.0-dev"
+        }
+    ]
+}
