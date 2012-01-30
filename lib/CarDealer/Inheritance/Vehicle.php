@@ -1,12 +1,18 @@
 <?php
 
-namespace CarDealer\Basic;
+namespace CarDealer\Inheritance;
 
 /**
  * @Entity
- * @Table("basic_vehicle")
+ * @Table(name="joined_vehicle")
+ * @InheritanceType("JOINED")
+ * @DiscriminatorMap({
+ *  "bike": "Bike",
+ *  "car": "Car",
+ *  "truck": "Truck"
+ * })
  */
-class Vehicle
+abstract class Vehicle
 {
     /** @Column(type="integer") @Id @GeneratedValue **/
     protected $id;
