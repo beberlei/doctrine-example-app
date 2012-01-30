@@ -2,11 +2,12 @@
 namespace CarDealer\Basic;
 
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\Console\Input\InputInterface;
 use CarFramework\ConsoleScenario;
 
 class VehicleScenario extends ConsoleScenario
 {
-    public function play(EntityManager $entityManager, $args)
+    public function play(EntityManager $entityManager, InputInterface $input)
     {
         $vehicle = new Vehicle();
         $vehicle->setOffer("Brand New Audi A8 for just 80.000 €");

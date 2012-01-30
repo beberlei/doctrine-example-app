@@ -18,6 +18,7 @@ abstract class ConsoleScenario extends Command
 
     public function __construct(EntityManager $entityManager)
     {
+        parent::__construct("example");
         $this->em = $entityManager;
     }
 
@@ -34,20 +35,20 @@ abstract class ConsoleScenario extends Command
 
     final protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $logger = new \CarFramework\ConsoleSQLLogger();
-        $this->em->getConfiguration()->setSQLLogger($logger);
+        if (!$input->getOption('quiet')) {
+            $logger = new \CarFramework\ConsoleSQLLogger($output);
+            $this->em->getConfiguration()->setSQLLogger($logger);
+        }
 
-        $args = $input->getArguments();
-        $this->play($this->em, $args['args']);
-
-        $logger->flush($output);
+        $this->play($this->em, $input);
     }
 
     /**
      * Play the scenario
      *
      * @param EntityManager $entityManager
+     * @param InputInterface $input
      */
-    abstract public function play(EntityManager $entityManager, $args);
+    abstract public function play(EntityManager $entityManager, InputInterface $input);
 }
 
