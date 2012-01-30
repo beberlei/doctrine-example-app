@@ -9,10 +9,9 @@ use Symfony\Component\Yaml\Yaml;
 
 class Application
 {
-    public static function bootstrap($configFile)
+    public static function bootstrap($configFile, $isDevMode = true)
     {
         $dbParams = Yaml::parse($configFile);
-        $isDevMode = true;
 
         $config = Setup::createAnnotationMetadataConfiguration(array(__DIR__ . "/../CarDealer"), $isDevMode);
         $entityManager = EntityManager::create($dbParams, $config);
