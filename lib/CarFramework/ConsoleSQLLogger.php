@@ -52,6 +52,7 @@ class ConsoleSQLLogger implements SQLLogger
             }
             $output->writeln(sprintf('    * %s: %s', $type, substr(str_replace(array("\r", "\n"), " ", $param), 0, 100)));
         }
+        $output->writeln('');
     }
 
     public function finalize()

@@ -16,7 +16,9 @@ class VehicleScenario extends ConsoleScenario
         $vehicle->setKilometres(400);
 
         $entityManager->persist($vehicle);
+        $this->tick("flush");
         $entityManager->flush();
+        $this->tick("flush");
         $entityManager->clear();
 
         $vehicle = $entityManager->find('CarDealer\Basic\Vehicle', $vehicle->getId());

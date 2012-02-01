@@ -16,6 +16,10 @@ abstract class ConsoleScenario extends Command
      */
     private $em;
 
+    private $timers = array();
+
+    private $output;
+
     public function __construct(EntityManager $entityManager)
     {
         parent::__construct("example");
@@ -35,12 +39,24 @@ abstract class ConsoleScenario extends Command
 
     final protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $this->output = $output;
         $logger = new \CarFramework\ConsoleSQLLogger($output);
         $this->em->getConfiguration()->setSQLLogger($logger);
 
         $this->play($this->em, $input);
 
         $logger->finalize();
+    }
+
+    public function tick($timerName)
+    {
+        $time = microtime(true);
+        if (isset ($this->timers[$timerName])) {
+            $this->output->writeln('');
+            $this->output->writeln('<info>Timer "' . $timerName. '": ' . ($time - $this->timers[$timerName]) . '</info>');
+            $this->output->writeln('');
+        }
+        $this->timers[$timerName] = $time;
     }
 
     /**
