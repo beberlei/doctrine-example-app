@@ -5,3 +5,4 @@ memory: true
 #user: root
 #password: ~
 #dbname: exampleapp
+#host: localhost
