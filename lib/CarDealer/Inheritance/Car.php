@@ -9,6 +9,6 @@ namespace CarDealer\Inheritance;
 class Car extends Vehicle
 {
     /** @Column(type="boolean") */
-    protected $isTaxi;
+    protected $isTaxi = false;
 }
 
