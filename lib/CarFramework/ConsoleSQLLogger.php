@@ -49,6 +49,8 @@ class ConsoleSQLLogger implements SQLLogger
                 } else {
                     $param = "<Object:".get_class($param).">";
                 }
+            } else if (is_array($param)) {
+                $param = implode(", ", $param);
             }
             $output->writeln(sprintf('    * %s: %s', $type, substr(str_replace(array("\r", "\n"), " ", (string)$param), 0, 100)));
         }
