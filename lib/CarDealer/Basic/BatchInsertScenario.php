@@ -5,7 +5,7 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\Console\Input\InputInterface;
 use CarFramework\ConsoleScenario;
 
-class QueryScenario extends ConsoleScenario
+class BatchInsertScenario extends ConsoleScenario
 {
     public function play(EntityManager $entityManager, InputInterface $input)
     {
@@ -17,18 +17,14 @@ class QueryScenario extends ConsoleScenario
             $vehicle->setKilometres(400 * rand(1, 10000));
 
             $entityManager->persist($vehicle);
+            if ($i % 1000 == 0) {
+                $entityManager->flush();
+                $entityManager->clear();
+            }
         }
 
         $entityManager->flush();
         $entityManager->clear();
-
-        $query = "SELECT count(v.id) FROM CarDealer\Basic\Vehicle v WHERE v.price > ?1 AND v.admission > ?2 AND v.kilometres < 50000";
-        $result = $entityManager->createQuery($query)
-                                ->setParameter(1, 30000)
-                                ->setParameter(2, new \DateTime("2007-04-01"))
-                                ->getSingleScalarResult();
-
-        echo "I have found " . $result . " vehicles matching the description.\n";
     }
 }
 
