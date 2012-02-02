@@ -13,5 +13,5 @@ $memcache->connect('127.0.0.1');
 $cache = new \Doctrine\Common\Cache\MemcacheCache();
 $cache->setMemcache($memcache);*/
 
-$entityManager = \CarFramework\Application::bootstrap($configFile, false, $cache);
+$entityManager = \CarFramework\Application::bootstrap($configFile, true, $cache);
 

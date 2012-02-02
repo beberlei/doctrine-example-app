@@ -50,7 +50,7 @@ class ConsoleSQLLogger implements SQLLogger
                     $param = "<Object:".get_class($param).">";
                 }
             }
-            $output->writeln(sprintf('    * %s: %s', $type, substr(str_replace(array("\r", "\n"), " ", $param), 0, 100)));
+            $output->writeln(sprintf('    * %s: %s', $type, substr(str_replace(array("\r", "\n"), " ", (string)$param), 0, 100)));
         }
         $output->writeln('');
     }
