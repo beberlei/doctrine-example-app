@@ -15,12 +15,15 @@ class UpdateScenario extends ConsoleScenario
             throw new \InvalidArgumentException("Ein Parameter ID, 'feldName' und 'value' wird erwartet.");
         }
         echo "Update Entitaet mit ID $id#$name auf wert $value\n";
-        $method = "set" . $args[0];
-        $value = $args[1];
+$id = $args[0];
+        $method = "set" . $args[1];
+        $value = $args[2];
 
         // 1. entity aus datenbank holen
 
         $object->$method($value);
+
+        $entityManager->flush();
     }
 }
 

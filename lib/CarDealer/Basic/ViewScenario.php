@@ -17,6 +17,9 @@ class ViewScenario extends ConsoleScenario
 
         // 1. entity aus datenbank holen
         // 2. entity anzeigen
+        $vehicle = $entityManager->find('CarDealer\Basic\Vehicle', $id);
+
+        echo "The price is: " . $vehicle->getPrice() . "\n";
     }
 }
 
