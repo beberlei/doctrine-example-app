@@ -43,7 +43,8 @@ abstract class ConsoleScenario extends Command
         $logger = new \CarFramework\ConsoleSQLLogger($output);
         $this->em->getConfiguration()->setSQLLogger($logger);
 
-        $this->play($this->em, $input);
+        $args = $input->getArgument("args");
+        $this->play($this->em, $args);
 
         $logger->finalize();
     }
@@ -63,8 +64,8 @@ abstract class ConsoleScenario extends Command
      * Play the scenario
      *
      * @param EntityManager $entityManager
-     * @param InputInterface $input
+     * @param array $args
      */
-    abstract public function play(EntityManager $entityManager, InputInterface $input);
+    abstract public function play(EntityManager $entityManager, array $args);
 }
 

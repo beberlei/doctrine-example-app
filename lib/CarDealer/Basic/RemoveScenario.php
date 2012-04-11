@@ -2,23 +2,21 @@
 namespace CarDealer\Basic;
 
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\Console\Input\InputInterface;
 use CarFramework\ConsoleScenario;
 
 class RemoveScenario extends ConsoleScenario
 {
     /** php console example:basic:remove <id> */
-    public function play(EntityManager $entityManager, InputInterface $input)
+    public function play(EntityManager $entityManager, array $args)
     {
-        $args = $input->getArgument("args");
         if (count($args) == 0) {
-            throw new \InvalidArgumentException("Eine ID wird als Parameter erwartet!");
+            throw new \InvalidArgumentException("One parameter 'ID' is expected.");
         }
         $id = $args[0];
-        echo "Loesche Entitaet mit ID $id\n";
+        echo "Delete Entity with ID $id\n";
 
-        // 1. entity aus datenbank holen
-        // 2. entity löschen
+        // 1. grab entity from database
+        // 2. delete entity
     }
 }
 

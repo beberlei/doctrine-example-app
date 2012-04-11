@@ -13,7 +13,7 @@ class Application
     {
         $dbParams = Yaml::parse($configFile);
 
-        $config = Setup::createAnnotationMetadataConfiguration(array(__DIR__ . "/../CarDealer"), $isDevMode, null, $cache);
+        $config = Setup::createAnnotationMetadataConfiguration(array(__DIR__ . "/../CarDealer/Entity"), $isDevMode, null, $cache);
         $entityManager = EntityManager::create($dbParams, $config);
 
         if ($dbParams['driver'] == "pdo_sqlite" && isset($dbParams['memory'])) {

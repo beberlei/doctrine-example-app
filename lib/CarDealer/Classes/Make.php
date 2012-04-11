@@ -1,10 +1,10 @@
 <?php
 
-namespace CarDealer\Inheritance;
+namespace CarDealer\Entity;
 
 /**
  * @Entity
- * @Table(name="joined_make")
+ * @Table(name="make")
  */
 class Make extends \CarFramework\BaseObject
 {

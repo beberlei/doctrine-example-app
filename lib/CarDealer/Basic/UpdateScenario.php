@@ -2,15 +2,13 @@
 namespace CarDealer\Basic;
 
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\Console\Input\InputInterface;
 use CarFramework\ConsoleScenario;
 
 class UpdateScenario extends ConsoleScenario
 {
     /** php console example:basic:update <id> price 20000 */
-    public function play(EntityManager $entityManager, InputInterface $input)
+    public function play(EntityManager $entityManager, array $args)
     {
-        $args = $input->getArgument("args");
         if (count($args) != 3) {
             throw new \InvalidArgumentException("Ein Parameter ID, 'feldName' und 'value' wird erwartet.");
         }
@@ -19,11 +17,12 @@ $id = $args[0];
         $method = "set" . $args[1];
         $value = $args[2];
 
-        // 1. entity aus datenbank holen
+        // 1. Grab entity from ddatabase
 
-        $object->$method($value);
+        // 2. set the property
+        //$object->$method($value);
 
-        $entityManager->flush();
+        // 3. flush transaction
     }
 }
 
