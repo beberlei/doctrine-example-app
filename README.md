@@ -1,5 +1,14 @@
 # Doctrine Example App
 
+## Installation
+
+1. git clone https://github.com/beberlei/doctrine-example-app.git
+2. Call "php bin/composer.phar install" 
+3. Copy config.yml-dist in config.yml 
+4. Configure config.yml MySQL/PgSQL/SQLite
+
+## Overview
+
 A simple CarDealer example to show various mapping scenarios and Doctrine features.
 
 It runs completly on the command-line and integrates an SQL toolbar that shows queries whenever they are executed.
@@ -10,12 +19,11 @@ You can write new commands by extending a simple class:
     namespace CarDealer\Basic;
 
     use Doctrine\ORM\EntityManager;
-    use Symfony\Component\Console\Input\InputInterface;
     use CarFramework\ConsoleScenario;
 
     class VehicleScenario extends ConsoleScenario
     {
-        public function play(EntityManager $entityManager, InputInterface $input)
+        public function play(EntityManager $entityManager, array $args)
         {
             // your testcode here
         }
